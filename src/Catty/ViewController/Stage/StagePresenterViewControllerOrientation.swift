@@ -27,4 +27,14 @@ extension StagePresenterViewController: UINavigationControllerDelegate {
     public func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
         navigationController.topViewController?.supportedInterfaceOrientations ?? .portrait
     }
+
+    @objc public func setUpSidebarIndicator() {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        guard let image = UIImage(named: "arrow-right-bold") else {
+            return
+        }
+        imageView.image = image
+        self.sidebarIndicatorView = imageView
+    }
 }

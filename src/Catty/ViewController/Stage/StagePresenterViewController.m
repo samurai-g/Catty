@@ -116,8 +116,20 @@
         self.menuView = [[StagePresenterSideMenuView alloc] initWithFrame:CGRectMake(0, 0, screenWidth / StagePresenterSideMenuView.widthProportionalPortrait, screenHeight) andStagePresenterViewController_: self];
     }
     
+    [self setUpSidebarIndicator];
+    [self.view insertSubview:self.sidebarIndicatorView aboveSubview:self.skView];
+    
+    self.sidebarIndicatorView.translatesAutoresizingMaskIntoConstraints = NO;
+    [NSLayoutConstraint activateConstraints:@[
+        [self.sidebarIndicatorView.topAnchor constraintEqualToAnchor:self.view.topAnchor],
+        [self.sidebarIndicatorView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor],
+        [self.sidebarIndicatorView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+        [self.sidebarIndicatorView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor]
+    ]];
     
     [self.view insertSubview:self.menuView aboveSubview:self.skView];
+
+
     
     self.menuView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.menuView.topAnchor constraintEqualToAnchor:self.view.topAnchor].active = YES;
